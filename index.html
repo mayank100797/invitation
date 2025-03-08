@@ -1,60 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-  body {
-    background-image: url('https://github.com/user-attachments/assets/16e55d59-a527-4db6-946c-a3147b399ef0'); /* Use your image name */
-    background-size: cover; /* Cover the entire screen */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* No repeating */
-    height: 100vh; /* Full height */
-    margin: 0;
-    padding: 0;
-
-  }
-h1, h2, h3, h4, h5, h6 {
-    color: white; /* Make all header fonts white */
-  }
-</style>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitation</title>
+    
     <style>
+        /* Background Image - Full Screen for Desktop & Mobile */
         body {
-            font-family: Arial, sans-serif;
+            background: url('https://github.com/user-attachments/assets/16e55d59-a527-4db6-946c-a3147b399ef0') no-repeat center center fixed; 
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            background-color: #f4f4f4;
+            color: white; /* White text for visibility */
         }
+
+        /* Container with semi-transparent background */
         .container {
-            margin-top: 100px;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 90%; /* Ensures proper scaling on small screens */
         }
+
+        /* Button container */
         .buttons {
+            position: relative;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
             margin-top: 20px;
         }
+
+        /* Button styles */
         .btn {
             padding: 10px 20px;
             font-size: 18px;
             border: none;
             cursor: pointer;
-            margin: 10px;
+            border-radius: 8px;
         }
+
         .yes {
             background-color: #28a745;
             color: white;
         }
+
         .no {
             background-color: #dc3545;
             color: white;
             position: absolute;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll; /* Ensures full image coverage on phones */
+            }
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+            .btn {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>We are inviting you for senior PRISM Farewell party </h2>
-<h3>Do you accept the invitation? </h3>
+        <h2>We are inviting you for senior PRISM Farewell party</h2>
+        <h3>Do you accept the invitation?</h3>
+        
         <div class="buttons">
             <button class="btn yes" onclick="openImage()">Yes</button>
             <button class="btn no" id="noButton">No</button>
@@ -62,8 +87,8 @@ h1, h2, h3, h4, h5, h6 {
     </div>
 
     <script>
+        // Open new window with an image when "Yes" is clicked
         function openImage() {
-            // Open a new window with the uploaded image
             let newWindow = window.open("", "_blank", "width=800,height=600");
             newWindow.document.write(`
                 <html>
@@ -75,11 +100,11 @@ h1, h2, h3, h4, h5, h6 {
             `);
         }
 
+        // Move "No" button when hovered
         document.getElementById('noButton').addEventListener('mouseover', function() {
-            let x = Math.random() * window.innerWidth * 0.8;
-            let y = Math.random() * window.innerHeight * 0.8;
-            this.style.left = x + "px";
-            this.style.top = y + "px";
+            let x = Math.random() * 200 - 100; // Random position shift
+            let y = Math.random() * 200 - 100;
+            this.style.transform = `translate(${x}px, ${y}px)`;
         });
     </script>
 
