@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitation</title>
-    
+
     <style>
-        /* Background Image - Full Screen for Desktop & Mobile */
+        /* Ensure background fully covers the screen */
         body {
-            background: url('https://github.com/user-attachments/assets/16e55d59-a527-4db6-946c-a3147b399ef0') no-repeat center center fixed; 
+            background: url('https://github.com/user-attachments/assets/056c9d22-a2b9-444f-86be-cbb836f75a80') no-repeat center center fixed; 
             background-size: cover;
             height: 100vh;
             margin: 0;
@@ -16,30 +16,29 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white; /* White text for visibility */
+            color: white;
         }
 
-        /* Container with semi-transparent background */
+        /* Center the container */
         .container {
             background: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
             padding: 30px;
             border-radius: 15px;
-            max-width: 90%; /* Ensures proper scaling on small screens */
+            width: 90%;
+            max-width: 500px; /* Restricts width for better appearance */
         }
 
-        /* Button container */
+        /* Buttons styling */
         .buttons {
             position: relative;
             display: flex;
-            gap: 20px;
             justify-content: center;
-            align-items: center;
+            gap: 20px;
             margin-top: 20px;
         }
 
-        /* Button styles */
         .btn {
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-size: 18px;
             border: none;
             cursor: pointer;
@@ -69,7 +68,7 @@
             }
             .btn {
                 font-size: 16px;
-                padding: 8px 16px;
+                padding: 10px 20px;
             }
         }
     </style>
@@ -79,7 +78,7 @@
     <div class="container">
         <h2>We are inviting you for senior PRISM Farewell party</h2>
         <h3>Do you accept the invitation?</h3>
-        
+
         <div class="buttons">
             <button class="btn yes" onclick="openImage()">Yes</button>
             <button class="btn no" id="noButton">No</button>
@@ -102,7 +101,7 @@
 
         // Move "No" button when hovered
         document.getElementById('noButton').addEventListener('mouseover', function() {
-            let x = Math.random() * 200 - 100; // Random position shift
+            let x = Math.random() * 300 - 150; // Moves randomly within a range
             let y = Math.random() * 200 - 100;
             this.style.transform = `translate(${x}px, ${y}px)`;
         });
