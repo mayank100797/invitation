@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitation</title>
-
     <style>
-        /* Ensure background fully covers the screen */
+        /* Ensure full-screen background image */
         body {
-            background: url('https://github.com/user-attachments/assets/056c9d22-a2b9-444f-86be-cbb836f75a80') no-repeat center center fixed; 
+            background: url('https://github.com/user-attachments/assets/2b99ee3e-069f-49cc-8b69-750020c7d80a') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             margin: 0;
@@ -16,21 +15,13 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            font-family: Arial, sans-serif;
             color: white;
+            flex-direction: column;
         }
 
-        /* Center the container */
-        .container {
-            background: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
-            padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 500px; /* Restricts width for better appearance */
-        }
-
-        /* Buttons styling */
+        /* Buttons Styling */
         .buttons {
-            position: relative;
             display: flex;
             justify-content: center;
             gap: 20px;
@@ -42,7 +33,8 @@
             font-size: 18px;
             border: none;
             cursor: pointer;
-            border-radius: 8px;
+            transition: 0.3s;
+            border-radius: 5px;
         }
 
         .yes {
@@ -53,57 +45,55 @@
         .no {
             background-color: #dc3545;
             color: white;
-            position: absolute;
-            transition: transform 0.3s ease-in-out;
+            position: relative;
         }
 
-        /* Responsive Design for Mobile */
-        @media (max-width: 768px) {
+        /* No Button moves when hovered */
+        .no:hover {
+            position: absolute;
+            left: calc(50% - 100px + (Math.random() * 200px));
+            top: calc(50% - 50px + (Math.random() * 100px));
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
             body {
-                background-attachment: scroll; /* Ensures full image coverage on phones */
+                background-size: cover;
             }
-            .container {
-                width: 90%;
-                padding: 20px;
-            }
-            .btn {
-                font-size: 16px;
-                padding: 10px 20px;
+            .buttons {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>We are inviting you for senior PRISM Farewell party</h2>
-        <h3>Do you accept the invitation?</h3>
-
-        <div class="buttons">
-            <button class="btn yes" onclick="openImage()">Yes</button>
-            <button class="btn no" id="noButton">No</button>
-        </div>
+    <h2>We are inviting you to the Senior PRISM Farewell Party</h2>
+    <h3>Do you accept the invitation?</h3>
+    <div class="buttons">
+        <button class="btn yes" onclick="openImage()">Yes</button>
+        <button class="btn no" id="noButton">No</button>
     </div>
 
     <script>
-        // Open new window with an image when "Yes" is clicked
         function openImage() {
             let newWindow = window.open("", "_blank", "width=800,height=600");
             newWindow.document.write(`
                 <html>
                 <head><title>Invitation Accepted</title></head>
-                <body style="margin:0; display:flex; justify-content:center; align-items:center; height:100vh; background-color:#000;">
-                    <img src="https://github.com/user-attachments/assets/2b99ee3e-069f-49cc-8b69-750020c7d80a" style="max-width:100%; max-height:100%;">
+                <body style="margin:0; display:flex; justify-content:center; align-items:center; height:100vh; background:#000;">
+                    <img src="https://github.com/user-attachments/assets/056c9d22-a2b9-444f-86be-cbb836f75a80" style="max-width:90%; max-height:90%;">
                 </body>
                 </html>
             `);
         }
 
-        // Move "No" button when hovered
+        // Move "No" button randomly when hovered
         document.getElementById('noButton').addEventListener('mouseover', function() {
-            let x = Math.random() * 300 - 150; // Moves randomly within a range
-            let y = Math.random() * 200 - 100;
-            this.style.transform = `translate(${x}px, ${y}px)`;
+            let x = Math.random() * window.innerWidth * 0.8;
+            let y = Math.random() * window.innerHeight * 0.8;
+            this.style.left = x + "px";
+            this.style.top = y + "px";
         });
     </script>
 
